@@ -1,2 +1,1 @@
-# formatter
-The XON Code Formatter
+# The XON Code Formatter
