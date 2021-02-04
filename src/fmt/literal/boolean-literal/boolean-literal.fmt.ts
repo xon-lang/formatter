@@ -3,6 +3,6 @@ import { LiteralFormatter } from '../literal.fmt';
 
 export class BooleanLiteralFormatter extends LiteralFormatter<BooleanLiteralTree> {
   formattedCode(): string {
-    return this.tree.ctx.BooleanLiteral().text;
+    return this.tree.ctx.BooleanLiteral().text.trim();
   }
 }
