@@ -12,8 +12,7 @@
     "declaration": true,
     "paths": {
       "*": ["node_modules/*"]
-    },
-    "skipLibCheck": true
+    }
   },
   "include": ["dist/**/*"],
   "exclude": ["dist/**/*.test.ts", "node_modules"]
