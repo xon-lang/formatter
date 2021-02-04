@@ -3,8 +3,8 @@ import { ProgramFormatter } from './fmt/program/program.fmt';
 import { FormatterConfig } from './formatter-config';
 
 export class CodeFormatter {
-  constructor(public code: string, public config: FormatterConfig) {
-    FormatterConfig.current = config;
+  constructor(public code: string, public config?: FormatterConfig) {
+    FormatterConfig.current = config || FormatterConfig.current;
   }
 
   formattedCode(): string {
