@@ -1,12 +1,15 @@
-import { parseImports } from '@xon/ast';
+import { ImportsTree } from '@xon/ast';
 import { BaseFormatter } from '../base.fmt';
 
 export class ImportsFormatter extends BaseFormatter {
+  constructor(public tree: ImportsTree) {
+    super(tree);
+  }
+
   formattedCode(): string {
-    const tree = parseImports(this.code);
-    const membersFmt = tree.members
+    const membersFmt = this.tree.members
       .map((x) => `${x.name}${x.alias ? ` as ${x.alias}` : ''}`)
       .join(', ');
-    return `${tree.scopeName}/${tree.libName}: ${membersFmt}`;
+    return `${this.tree.scopeName}/${this.tree.libName}: ${membersFmt}`;
   }
 }

@@ -1,5 +1,7 @@
+import { BaseTree } from '@xon/ast';
+
 export abstract class BaseFormatter {
-  constructor(protected code: string) {}
+  constructor(public tree: BaseTree) {}
 
   abstract formattedCode(): string;
 }
