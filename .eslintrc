@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "jest", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript/base",
+    "plugin:jest/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.eslint.json"]
+  },
+  "rules": {
+    "import/no-cycle": 0,
+    "import/prefer-default-export": 0,
+    "no-underscore-dangle": 0,
+    "quotes": [2, "single", "avoid-escape"],
+    "no-inline-comments": 2
+  }
+}

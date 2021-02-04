@@ -1,0 +1,54 @@
+{
+  "name": "@xon/formatter",
+  "author": "Nizami",
+  "version": "1.0.0",
+  "description": "XON language formatter",
+  "bugs": {
+    "url": "https://github.com/xon-lang/formatter/issues"
+  },
+  "homepage": "https://github.com/xon-lang/formatter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xon-lang/formatter.git"
+  },
+  "keywords": [
+    "xon",
+    "formatter"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "rimraf": "node_modules/rimraf/bin.js",
+    "lint": "eslint . --max-warnings=0",
+    "test": "npm run lint && jest --no-cache",
+    "build": "scripts/build.sh",
+    "pre-commit": "scripts/pre-commit.sh",
+    "preversion": "npm run test",
+    "version": "npm run build",
+    "postversion": "git push && cd dist && npm publish --access public && rimraf ../dist"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "create-ts-index": "^1.13.6",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.0",
+    "typescript": "^4.1.3"
+  }
+}
