@@ -4,7 +4,7 @@ import { FormatterConfig } from './formatter-config';
 
 export class CodeFormatter {
   constructor(public code: string, public config?: FormatterConfig) {
-    FormatterConfig.current = config || FormatterConfig.current;
+    Object.assign(FormatterConfig.current, config);
   }
 
   formattedCode(): string {

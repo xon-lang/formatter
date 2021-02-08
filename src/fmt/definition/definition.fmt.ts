@@ -1,5 +1,5 @@
 import { DefinitionTree } from '@xon/ast';
-import { FormatterConfig } from '../../formatter-config';
+import { config } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
 import { TypeFormatter } from '../type/type.fmt';
 import { getMemberFormatter } from './member/member-helper';
@@ -15,20 +15,20 @@ export class DefinitionFormatter extends BaseFormatter {
         : '';
 
     const properties = this.tree.properties
-      .map((x) => FormatterConfig.current.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
+      .join(config.newLine2);
     const methods = this.tree.methods
-      .map((x) => FormatterConfig.current.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
+      .join(config.newLine2);
     const infixOperators = this.tree.infixOperators
-      .map((x) => FormatterConfig.current.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
+      .join(config.newLine2);
 
     return (
       `${name}${inheritance}:` +
-      `${properties ? FormatterConfig.current.newLine : ''}${properties}` +
-      `${methods ? FormatterConfig.current.newLine : ''}${methods}` +
-      `${infixOperators ? FormatterConfig.current.newLine : ''}${infixOperators}`
+      `${properties ? config.newLine2 : ''}${properties}` +
+      `${methods ? config.newLine2 : ''}${methods}` +
+      `${infixOperators ? config.newLine2 : ''}${infixOperators}`
     );
   }
 }

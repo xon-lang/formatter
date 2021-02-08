@@ -1,5 +1,5 @@
 import { ProgramTree } from '@xon/ast';
-import { FormatterConfig } from '../../formatter-config';
+import { config } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
 import { DefinitionFormatter } from '../definition/definition.fmt';
 import { LibraryFormatter } from '../library/library.fmt';
@@ -11,18 +11,18 @@ export class ProgramFormatter extends BaseFormatter {
   formattedCode(): string {
     const libraries = this.tree.libraries
       .map((x) => new LibraryFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .join(config.newLine);
     const statements = this.tree.statements
       .map((x) => getStatementFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .join(config.newLine);
     const definitions = this.tree.definitions
       .map((x) => new DefinitionFormatter(x).formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .join(config.newLine);
 
     return (
       `${libraries}` +
-      `${statements ? FormatterConfig.current.newLine : ''}${statements}` +
-      `${definitions ? FormatterConfig.current.newLine : ''}${definitions}`
+      `${statements ? config.newLine2 : ''}${statements}` +
+      `${definitions ? config.newLine2 : ''}${definitions}`
     ).trim();
   }
 }
