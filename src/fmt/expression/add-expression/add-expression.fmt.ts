@@ -6,9 +6,9 @@ export class AddExpressionFormatter extends ExpressionFormatter {
   tree: AddExpressionTree;
 
   formattedCode(): string {
-    const leftFmt = getExpressionFormatter(this.tree.left);
-    const rightFmt = getExpressionFormatter(this.tree.right);
+    const left = getExpressionFormatter(this.tree.left).formattedCode();
+    const right = getExpressionFormatter(this.tree.right).formattedCode();
 
-    return `${leftFmt.formattedCode()} + ${rightFmt.formattedCode()}`;
+    return `${left} + ${right}`;
   }
 }

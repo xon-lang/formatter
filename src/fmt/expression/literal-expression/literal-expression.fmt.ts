@@ -6,7 +6,7 @@ export class LiteralExpressionFormatter extends ExpressionFormatter {
   tree: LiteralExpressionTree;
 
   formattedCode(): string {
-    const fmt = getLiteralFormatter(this.tree.literal);
-    return fmt.formattedCode();
+    const literal = getLiteralFormatter(this.tree.literal);
+    return literal.formattedCode();
   }
 }

@@ -1,23 +1,28 @@
 import { ProgramTree } from '@xon/ast';
 import { FormatterConfig } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
+import { DefinitionFormatter } from '../definition/definition.fmt';
 import { LibraryFormatter } from '../library/library.fmt';
-import { getStatementsFormatters } from '../statement/statement-helper';
+import { getStatementFormatter } from '../statement/statement-helper';
 
 export class ProgramFormatter extends BaseFormatter {
   tree: ProgramTree;
 
   formattedCode(): string {
-    const importsFmts = this.tree.libraries.map((x) => new LibraryFormatter(x));
-    const statementsFmts = getStatementsFormatters(this.tree.statements);
+    const libraries = this.tree.libraries
+      .map((x) => new LibraryFormatter(x).formattedCode())
+      .join(FormatterConfig.current.newLine);
+    const statements = this.tree.statements
+      .map((x) => getStatementFormatter(x).formattedCode())
+      .join(FormatterConfig.current.newLine);
+    const definitions = this.tree.definitions
+      .map((x) => new DefinitionFormatter(x).formattedCode())
+      .join(FormatterConfig.current.newLine);
 
-    const importsCode = `${importsFmts
-      .map((x) => x.formattedCode())
-      .join(FormatterConfig.current.newLine)}`;
-    const statmentsCode = `${statementsFmts
-      .map((x) => x.formattedCode())
-      .join(FormatterConfig.current.newLine)}`;
-
-    return importsCode + FormatterConfig.current.newLine + statmentsCode;
+    return (
+      `${libraries}` +
+      `${statements ? FormatterConfig.current.newLine : ''}${statements}` +
+      `${definitions ? FormatterConfig.current.newLine : ''}${definitions}`
+    ).trim();
   }
 }

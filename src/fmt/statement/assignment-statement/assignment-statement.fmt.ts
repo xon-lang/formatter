@@ -1,12 +1,13 @@
-import { ExpressionStatementTree } from '@xon/ast';
+import { AssignmentStatementTree } from '@xon/ast';
 import { getExpressionFormatter } from '../../expression/expression-helper';
 import { StatementFormatter } from '../statement.fmt';
 
-export class ExpressionStatementFormatter extends StatementFormatter {
-  tree: ExpressionStatementTree;
+export class AssignmentStatementFormatter extends StatementFormatter {
+  tree: AssignmentStatementTree;
 
   formattedCode(): string {
+    const { name } = this.tree;
     const value = getExpressionFormatter(this.tree.value).formattedCode();
-    return value;
+    return `${name} = ${value}`;
   }
 }
