@@ -14,21 +14,18 @@ export class DefinitionFormatter extends BaseFormatter {
         ? ` is ${new TypeFormatter(this.tree.inheritance).formattedCode()}`
         : '';
 
-    const properties = this.tree.properties
-      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(config.newLine2);
-    const methods = this.tree.methods
-      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(config.newLine2);
-    const infixOperators = this.tree.infixOperators
-      .map((x) => config.tabSpaces + getMemberFormatter(x).formattedCode())
-      .join(config.newLine2);
-
-    return (
-      `${name}${inheritance}:` +
-      `${properties ? config.newLine2 : ''}${properties}` +
-      `${methods ? config.newLine2 : ''}${methods}` +
-      `${infixOperators ? config.newLine2 : ''}${infixOperators}`
+    const properties = this.tree.properties.map(
+      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
     );
+    const methods = this.tree.methods.map(
+      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
+    );
+    const infixOperators = this.tree.infixOperators.map(
+      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
+    );
+
+    const members = [...properties, ...methods, ...infixOperators].join(config.newLine2);
+
+    return `${name}${inheritance}:${members ? config.newLine : ''}${members}`;
   }
 }

@@ -7,6 +7,6 @@ test('program', () => {
   const tree = parseDefinition(code);
   const fmt = new DefinitionFormatter(tree);
   expect(fmt.formattedCode()).toBe(
-    `Real is Float:${config.newLine2}${config.tabSpaces}prop Integer`
+    `Real is Float:${config.newLine}${config.tabSpaces}prop Integer`
   );
 });

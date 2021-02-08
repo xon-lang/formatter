@@ -9,20 +9,17 @@ export class ProgramFormatter extends BaseFormatter {
   tree: ProgramTree;
 
   formattedCode(): string {
-    const libraries = this.tree.libraries
-      .map((x) => new LibraryFormatter(x).formattedCode())
-      .join(config.newLine);
-    const statements = this.tree.statements
-      .map((x) => getStatementFormatter(x).formattedCode())
-      .join(config.newLine);
-    const definitions = this.tree.definitions
-      .map((x) => new DefinitionFormatter(x).formattedCode())
-      .join(config.newLine);
+    const libraries = this.tree.libraries.map((x) => new LibraryFormatter(x).formattedCode());
+    const statements = this.tree.statements.map((x) => getStatementFormatter(x).formattedCode());
+    const definitions = this.tree.definitions.map((x) =>
+      new DefinitionFormatter(x).formattedCode()
+    );
 
-    return (
-      `${libraries}` +
-      `${statements ? config.newLine2 : ''}${statements}` +
-      `${definitions ? config.newLine2 : ''}${definitions}`
-    ).trim();
+    const members = [libraries, statements, definitions]
+      .map((x) => x.join(config.newLine))
+      .filter((x) => x)
+      .join(config.newLine2);
+
+    return members;
   }
 }
