@@ -1,5 +1,5 @@
 import { InfixOperatorMemberTree } from '@xon/ast';
-import { FormatterConfig } from '../../../../formatter-config';
+import { config } from '../../../../formatter-config';
 import { getStatementsFormatters } from '../../../statement/statement-helper';
 import { TypeFormatter } from '../../../type/type.fmt';
 import { MemberFormatter } from '../member.fmt';
@@ -13,8 +13,8 @@ export class InfixOperatorMemberFormatter extends MemberFormatter {
     const returnType = new TypeFormatter(this.tree.returnType).formattedCode();
     const statements = getStatementsFormatters(this.tree.statements)
       .map((x) => x.formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .join(config.newLine);
 
-    return `infix ${operator} (${arg}) ${returnType}:${FormatterConfig.current.newLine}${statements}`;
+    return `infix ${operator} (${arg}) ${returnType}:${config.newLine}${statements}`;
   }
 }

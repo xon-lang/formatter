@@ -1,5 +1,5 @@
 import { MethodMemberTree } from '@xon/ast';
-import { FormatterConfig } from '../../../../formatter-config';
+import { config } from '../../../../formatter-config';
 import { getStatementsFormatters } from '../../../statement/statement-helper';
 import { TypeFormatter } from '../../../type/type.fmt';
 import { MemberFormatter } from '../member.fmt';
@@ -14,9 +14,9 @@ export class MethodMemberFormatter extends MemberFormatter {
       .join(', ');
     const returnType = new TypeFormatter(this.tree.returnType).formattedCode();
     const statements = getStatementsFormatters(this.tree.statements)
-      .map((x) => FormatterConfig.current.tabSpaces + x.formattedCode())
-      .join(FormatterConfig.current.newLine);
+      .map((x) => config.tabSpaces() + x.formattedCode())
+      .join(config.newLine);
 
-    return `${name} (${args}) ${returnType}:${FormatterConfig.current.newLine}${statements}`;
+    return `${name} (${args}) ${returnType}:${config.newLine}${statements}`;
   }
 }

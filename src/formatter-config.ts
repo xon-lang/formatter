@@ -1,13 +1,23 @@
 export class FormatterConfig {
-  static current = new FormatterConfig();
-
   newLine = '\n';
 
-  tabSpaces = '    ';
+  tabWidth = 4;
 
-  get newLine2(): string {
-    return this.newLine + this.newLine;
+  useTab = false;
+
+  digitsGroupCount = 0;
+
+  constructor(params: Partial<FormatterConfig> = {}) {
+    Object.assign(this, params);
+  }
+
+  emptyLine(count = 1): string {
+    return this.newLine.repeat(count + 1);
+  }
+
+  tabSpaces(): string {
+    return ' '.repeat(this.tabWidth);
   }
 }
 
-export const config = FormatterConfig.current;
+export const config = new FormatterConfig();

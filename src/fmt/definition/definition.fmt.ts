@@ -15,16 +15,16 @@ export class DefinitionFormatter extends BaseFormatter {
         : '';
 
     const properties = this.tree.properties.map(
-      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
+      (x) => config.tabSpaces() + getMemberFormatter(x).formattedCode()
     );
     const methods = this.tree.methods.map(
-      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
+      (x) => config.tabSpaces() + getMemberFormatter(x).formattedCode()
     );
     const infixOperators = this.tree.infixOperators.map(
-      (x) => config.tabSpaces + getMemberFormatter(x).formattedCode()
+      (x) => config.tabSpaces() + getMemberFormatter(x).formattedCode()
     );
 
-    const members = [...properties, ...methods, ...infixOperators].join(config.newLine2);
+    const members = [...properties, ...methods, ...infixOperators].join(config.emptyLine());
 
     return `${name}${inheritance}:${members ? config.newLine : ''}${members}`;
   }

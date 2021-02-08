@@ -18,7 +18,7 @@ export class ProgramFormatter extends BaseFormatter {
     const members = [libraries, statements, definitions]
       .map((x) => x.join(config.newLine))
       .filter((x) => x)
-      .join(config.newLine2);
+      .join(config.emptyLine());
 
     return members;
   }
