@@ -1,37 +1,7 @@
 {
-  "antlr4.format": {
-    "alignActions": true,
-    "alignColons": "none",
-    "alignFirstTokens": true,
-    "alignLabels": true,
-    "alignLexerCommands": true,
-    "alignSemicolons": "hanging",
-    "alignTrailers": true,
-    "alignTrailingComments": true,
-    "allowShortBlocksOnASingleLine": true,
-    "allowShortRulesOnASingleLine": true,
-    "breakBeforeBraces": false,
-    "breakBeforeParens": false,
-    "columnLimit": 120,
-    "continuationIndentWidth": 4,
-    "groupedAlignments": true,
-    "indentWidth": 4,
-    "keepEmptyLinesAtTheStartOfBlocks": true,
-    "maxEmptyLinesToKeep": 1,
-    "minEmptyLines": 0,
-    "reflowComments": false,
-    "ruleInternalsOnSingleLine": false,
-    "singleLineOverrulesHangingColon": true,
-    "spaceBeforeAssignmentOperators": true,
-    "tabWidth": 4,
-    "useTab": false
-  },
-  "antlr4.generation": {
-    "mode": "none"
-  },
   "git.postCommitCommand": "sync",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#054f6d"
+    "statusBar.background": "#804707"
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
