@@ -1,7 +1,7 @@
 {
   "name": "@xon/formatter",
   "author": "Nizami",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "XON language formatter",
   "bugs": {
     "url": "https://github.com/xon-lang/formatter/issues"
