@@ -1,7 +1,7 @@
 {
   "git.postCommitCommand": "sync",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#804707"
+    "statusBar.background": "#6e6703"
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
