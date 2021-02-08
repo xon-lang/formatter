@@ -1,7 +1,7 @@
 import { ProgramTree } from '@xon/ast';
 import { FormatterConfig } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
-import { ImportsFormatter } from '../imports/imports.fmt';
+import { LibraryFormatter } from '../library/library.fmt';
 import { getStatementsFormatters } from '../statement/statement-helper';
 
 export class ProgramFormatter extends BaseFormatter {
@@ -10,7 +10,7 @@ export class ProgramFormatter extends BaseFormatter {
   }
 
   formattedCode(): string {
-    const importsFmts = this.tree.imports.map((x) => new ImportsFormatter(x));
+    const importsFmts = this.tree.libraries.map((x) => new LibraryFormatter(x));
     const statementsFmts = getStatementsFormatters(this.tree.statements);
 
     const importsCode = `${importsFmts

@@ -1,8 +1,8 @@
-import { ImportsTree } from '@xon/ast';
+import { LibraryTree } from '@xon/ast';
 import { BaseFormatter } from '../base.fmt';
 
-export class ImportsFormatter extends BaseFormatter {
-  constructor(public tree: ImportsTree) {
+export class LibraryFormatter extends BaseFormatter {
+  constructor(public tree: LibraryTree) {
     super(tree);
   }
 
@@ -10,6 +10,6 @@ export class ImportsFormatter extends BaseFormatter {
     const membersFmt = this.tree.members
       .map((x) => `${x.name}${x.alias ? ` as ${x.alias}` : ''}`)
       .join(', ');
-    return `${this.tree.scopeName}/${this.tree.libName}: ${membersFmt}`;
+    return `${this.tree.scope}/${this.tree.name}: ${membersFmt}`;
   }
 }
