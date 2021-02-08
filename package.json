@@ -52,6 +52,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@xon/ast": "^1.7.1"
+    "@xon/ast": "^1.7.3"
   }
 }
