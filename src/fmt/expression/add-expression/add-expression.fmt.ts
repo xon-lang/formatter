@@ -3,9 +3,7 @@ import { getExpressionFormatter } from '../expression-helper';
 import { ExpressionFormatter } from '../expression.fmt';
 
 export class AddExpressionFormatter extends ExpressionFormatter {
-  constructor(public tree: AddExpressionTree) {
-    super(tree);
-  }
+  tree: AddExpressionTree;
 
   formattedCode(): string {
     const leftFmt = getExpressionFormatter(this.tree.left);

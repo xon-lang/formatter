@@ -3,9 +3,7 @@ import { getLiteralFormatter } from '../../literal/literal-helper';
 import { ExpressionFormatter } from '../expression.fmt';
 
 export class LiteralExpressionFormatter extends ExpressionFormatter {
-  constructor(public tree: LiteralExpressionTree) {
-    super(tree);
-  }
+  tree: LiteralExpressionTree;
 
   formattedCode(): string {
     const fmt = getLiteralFormatter(this.tree.literal);

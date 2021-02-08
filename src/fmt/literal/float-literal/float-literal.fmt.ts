@@ -2,9 +2,7 @@ import { FloatLiteralTree } from '@xon/ast';
 import { LiteralFormatter } from '../literal.fmt';
 
 export class FloatLiteralFormatter extends LiteralFormatter {
-  constructor(public tree: FloatLiteralTree) {
-    super(tree);
-  }
+  tree: FloatLiteralTree;
 
   formattedCode(): string {
     return `${

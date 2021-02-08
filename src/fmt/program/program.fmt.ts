@@ -5,9 +5,7 @@ import { LibraryFormatter } from '../library/library.fmt';
 import { getStatementsFormatters } from '../statement/statement-helper';
 
 export class ProgramFormatter extends BaseFormatter {
-  constructor(public tree: ProgramTree) {
-    super(tree);
-  }
+  tree: ProgramTree;
 
   formattedCode(): string {
     const importsFmts = this.tree.libraries.map((x) => new LibraryFormatter(x));

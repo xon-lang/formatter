@@ -2,9 +2,7 @@ import { LibraryTree } from '@xon/ast';
 import { BaseFormatter } from '../base.fmt';
 
 export class LibraryFormatter extends BaseFormatter {
-  constructor(public tree: LibraryTree) {
-    super(tree);
-  }
+  tree: LibraryTree;
 
   formattedCode(): string {
     const membersFmt = this.tree.members
