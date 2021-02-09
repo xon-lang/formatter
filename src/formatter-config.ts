@@ -5,7 +5,7 @@ export class FormatterConfig {
 
   useTab = false;
 
-  digitsGroupCount = 0;
+  digitsGroupCount: number;
 
   constructor(params: Partial<FormatterConfig> = {}) {
     Object.assign(this, params);
