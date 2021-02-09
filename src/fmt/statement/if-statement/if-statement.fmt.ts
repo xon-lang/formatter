@@ -13,7 +13,10 @@ export class IfStatementFormatter extends StatementFormatter {
       const statements = x.statements
         .map((z) => config.tab() + getStatementFormatter(z).formattedCode())
         .join(config.newLine);
-      return `${x.operator}${condition ? ` ${condition}` : ''}:${config.newLine}${statements}`;
+      const breakStatements = config.breakIfStatement || x.statements.length > 1;
+      return `${x.operator}${condition ? ` ${condition}` : ''}:${
+        breakStatements ? config.newLine + statements : ` ${statements.trim()}`
+      }`;
     });
     return items.join(config.newLine);
   }

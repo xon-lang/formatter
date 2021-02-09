@@ -1,4 +1,4 @@
-import { parseStatement, IfStatementTree } from '@xon/ast';
+import { IfStatementTree, parseStatement } from '@xon/ast';
 import { IfStatementFormatter } from './if-statement.fmt';
 
 test('if statement', () => {

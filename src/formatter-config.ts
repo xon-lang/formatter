@@ -7,6 +7,8 @@ export class FormatterConfig {
 
   digitsGroupCount: number;
 
+  breakIfStatement = true;
+
   constructor(params: Partial<FormatterConfig> = {}) {
     Object.assign(this, params);
   }
