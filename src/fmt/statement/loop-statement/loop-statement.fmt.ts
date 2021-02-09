@@ -20,8 +20,8 @@ export class LoopStatementFormatter extends StatementFormatter {
 
     const header = [value, key, index].filter((x) => x).join(', ');
 
-    return `loop${header ? ` ${header} in` : ''}${expression ? ` ${expression}` : ''}:${
-      breakStatements ? config.newLine + statements : ` ${statements.trim()}`
-    }`;
+    return `${this.tree.keyword}${header ? ` ${header} in` : ''}${
+      expression ? ` ${expression}` : ''
+    }:${breakStatements ? config.newLine + statements : ` ${statements.trim()}`}`;
   }
 }

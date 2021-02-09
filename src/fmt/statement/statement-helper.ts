@@ -2,7 +2,6 @@ import {
   AssignmentStatementTree,
   ExpressionStatementTree,
   IfStatementTree,
-  LineBreakStatementTree,
   LoopStatementTree,
   ReturnStatementTree,
   StatementTree,
@@ -27,7 +26,5 @@ export function getStatementFormatter(tree: StatementTree): StatementFormatter {
 }
 
 export function getStatementsFormatters(statements: StatementTree[]): StatementFormatter[] {
-  return statements
-    .filter((x) => !(x instanceof LineBreakStatementTree))
-    .map(getStatementFormatter);
+  return statements.map(getStatementFormatter);
 }

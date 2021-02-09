@@ -14,7 +14,7 @@ export class IfStatementFormatter extends StatementFormatter {
         .map((z) => config.tab() + getStatementFormatter(z).formattedCode())
         .join(config.newLine);
       const breakStatements = config.breakIfStatement || x.statements.length > 1;
-      return `${x.operator}${condition ? ` ${condition}` : ''}:${
+      return `${x.keyword}${condition ? ` ${condition}` : ''}:${
         breakStatements ? config.newLine + statements : ` ${statements.trim()}`
       }`;
     });
