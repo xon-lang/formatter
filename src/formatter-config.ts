@@ -9,6 +9,8 @@ export class FormatterConfig {
 
   breakIfStatement = true;
 
+  breakLoopStatement = true;
+
   constructor(params: Partial<FormatterConfig> = {}) {
     Object.assign(this, params);
   }
