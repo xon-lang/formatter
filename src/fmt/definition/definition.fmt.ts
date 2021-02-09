@@ -14,17 +14,12 @@ export class DefinitionFormatter extends BaseFormatter {
         ? ` is ${new TypeFormatter(this.tree.inheritance).formattedCode()}`
         : '';
 
-    const properties = this.tree.properties.map(
-      (x) => config.tab() + getMemberFormatter(x).formattedCode()
-    );
-    const methods = this.tree.methods.map(
-      (x) => config.tab() + getMemberFormatter(x).formattedCode()
-    );
-    const infixOperators = this.tree.infixOperators.map(
-      (x) => config.tab() + getMemberFormatter(x).formattedCode()
-    );
-
-    const members = [...properties, ...methods, ...infixOperators].join(config.emptyLine());
+    const members = [...this.tree.properties, ...this.tree.methods, ...this.tree.infixOperators]
+      .map((x) => getMemberFormatter(x).formattedCode())
+      .join(config.emptyLine())
+      .split(config.newLine)
+      .map((x) => config.tab() + x)
+      .join(config.newLine);
 
     return `${name}${inheritance}:${members ? config.newLine : ''}${members}`;
   }
