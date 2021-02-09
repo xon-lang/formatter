@@ -15,8 +15,12 @@ export class FormatterConfig {
     return this.newLine.repeat(count + 1);
   }
 
-  tabSpaces(): string {
-    return ' '.repeat(this.tabWidth);
+  tab(): string {
+    return this.useTab ? '\t' : ' '.repeat(this.tabWidth);
+  }
+
+  newLineTab(): string {
+    return this.newLine + this.tab();
   }
 }
 

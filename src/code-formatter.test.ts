@@ -13,6 +13,6 @@ test('program', () => {
     `my-scope/libname: UUID as U4, Math${config.emptyLine()}` +
       `2 + 2${config.emptyLine()}` +
       `Class:${config.newLine}` +
-      `${config.tabSpaces()}prop Integer`
+      `${config.tab()}prop Integer`
   );
 });

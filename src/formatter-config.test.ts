@@ -14,6 +14,6 @@ test('config', () => {
     `my-scope/libname: UUID as U4, Math${config.emptyLine()}` +
       `2 + 22_222${config.emptyLine()}` +
       `Class:${config.newLine}` +
-      `${config.tabSpaces()}prop Integer`
+      `${config.tab()}prop Integer`
   );
 });

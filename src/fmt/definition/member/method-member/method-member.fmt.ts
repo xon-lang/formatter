@@ -14,7 +14,7 @@ export class MethodMemberFormatter extends MemberFormatter {
       .join(', ');
     const returnType = new TypeFormatter(this.tree.returnType).formattedCode();
     const statements = getStatementsFormatters(this.tree.statements)
-      .map((x) => config.tabSpaces() + x.formattedCode())
+      .map((x) => config.tab() + x.formattedCode())
       .join(config.newLine);
 
     return `${name} (${args}) ${returnType}:${config.newLine}${statements}`;
