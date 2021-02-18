@@ -11,6 +11,14 @@ export class FormatterConfig {
 
   breakLoopStatement = true;
 
+  maxPropertiesCount = 5;
+
+  maxMethodsCount = 5;
+
+  maxOverloadsCount = 5;
+
+  maxArgumentsCount = 5;
+
   constructor(params: Partial<FormatterConfig> = {}) {
     Object.assign(this, params);
   }
