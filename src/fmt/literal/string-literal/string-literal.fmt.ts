@@ -5,6 +5,6 @@ export class StringLiteralFormatter extends LiteralFormatter {
   tree: StringLiteralTree;
 
   formattedCode(): string {
-    return this.tree.ctx.StringLiteral().text.trim();
+    return this.tree.ctx.STRING_LITERAL().text.trim();
   }
 }
