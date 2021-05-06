@@ -2,14 +2,13 @@ import {
   AssignmentStatementTree,
   ExpressionStatementTree,
   IfStatementTree,
-  LoopStatementTree,
+  parseStatement,
   ReturnStatementTree,
   StatementTree,
 } from '@xon/ast';
 import { AssignmentStatementFormatter } from './assignment-statement/assignment-statement.fmt';
 import { ExpressionStatementFormatter } from './expression-statement/expression-statement.fmt';
 import { IfStatementFormatter } from './if-statement/if-statement.fmt';
-import { LoopStatementFormatter } from './loop-statement/loop-statement.fmt';
 import { ReturnStatementFormatter } from './return-statement/return-statement.fmt';
 import { StatementFormatter } from './statement.fmt';
 
@@ -20,11 +19,14 @@ export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree instanceof ReturnStatementTree) return new ReturnStatementFormatter(tree);
   if (tree instanceof AssignmentStatementTree) return new AssignmentStatementFormatter(tree);
   if (tree instanceof IfStatementTree) return new IfStatementFormatter(tree);
-  if (tree instanceof LoopStatementTree) return new LoopStatementFormatter(tree);
 
-  throw Error(`No Statement found for ${tree?.constructor?.name}`);
+  throw Error(`Member formatter not found for "${tree.constructor.name}"`);
 }
 
-export function getStatementsFormatters(statements: StatementTree[]): StatementFormatter[] {
-  return statements.map(getStatementFormatter);
+export function formatStatementTree(tree: StatementTree): string {
+  return getStatementFormatter(tree).formattedCode();
+}
+
+export function formatStatementCode(code: string): string {
+  return getStatementFormatter(parseStatement(code)).formattedCode();
 }
