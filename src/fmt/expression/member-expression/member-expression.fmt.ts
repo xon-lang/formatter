@@ -1,5 +1,6 @@
 import { MemberExpressionTree } from '@xon/ast';
-import { ExpressionFormatter, formatExpressionTree } from '../expression.fmt';
+import { ExpressionFormatter } from '../expression.fmt';
+import { formatExpressionTree } from '../expression.fmt.helper';
 
 export class MemberExpressionFormatter extends ExpressionFormatter {
   tree: MemberExpressionTree;

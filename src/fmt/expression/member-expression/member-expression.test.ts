@@ -1,4 +1,4 @@
-import { formatExpressionCode } from '../expression.fmt';
+import { formatExpressionCode } from '../expression.fmt.helper';
 
 test('has member', () => {
   const code = 'a. b  . c';

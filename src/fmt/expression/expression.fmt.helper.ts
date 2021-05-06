@@ -5,6 +5,8 @@ import {
   InstanceExpressionTree,
   InstantiationExpressionTree,
   LiteralExpressionTree,
+  MemberExpressionTree,
+  OperatorExpressionTree,
   parseExpression,
 } from '@xon/ast';
 import { ExpressionFormatter } from './expression.fmt';
@@ -13,13 +15,17 @@ import { IndexExpressionFormatter } from './index-expression/index-expression.fm
 import { InstanceExpressionFormatter } from './instance-expression/instance-expression.fmt';
 import { InstantiationExpressionFormatter } from './instantiation-expression/instantiation-expression.fmt';
 import { LiteralExpressionFormatter } from './literal-expression/literal-expression.fmt';
+import { MemberExpressionFormatter } from './member-expression/member-expression.fmt';
+import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
 
 export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatter {
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
   if (tree instanceof IndexExpressionTree) return new IndexExpressionFormatter(tree);
   if (tree instanceof InstanceExpressionTree) return new InstanceExpressionFormatter(tree);
+  if (tree instanceof MemberExpressionTree) return new MemberExpressionFormatter(tree);
   if (tree instanceof InstantiationExpressionTree)
     return new InstantiationExpressionFormatter(tree);
   if (tree instanceof LiteralExpressionTree) return new LiteralExpressionFormatter(tree);
