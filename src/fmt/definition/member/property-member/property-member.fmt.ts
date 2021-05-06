@@ -1,5 +1,5 @@
 import { PropertyMemberTree } from '@xon/ast';
-import { formatExpressionTree } from '../../../expression/expression.fmt.helper';
+import { formatExpressionTree } from '../../../expression/expression.fmt';
 import { formatTypeTree } from '../../../type/type.fmt.helper';
 import { MemberFormatter } from '../member.fmt';
 

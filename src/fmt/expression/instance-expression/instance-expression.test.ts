@@ -1,4 +1,4 @@
-import { formatExpressionCode } from '../expression.fmt.helper';
+import { formatExpressionCode } from '../expression.fmt';
 
 test('has this keyword', () => {
   const code = 'this   ';

@@ -1,4 +1,4 @@
-import { formatExpressionCode } from '../expression.fmt.helper';
+import { formatExpressionCode } from '../expression.fmt';
 
 test('literal expression', () => {
   const code = '1  ';

@@ -1,6 +1,5 @@
 import { IndexExpressionTree } from '@xon/ast';
-import { ExpressionFormatter } from '../expression.fmt';
-import { formatExpressionTree } from '../expression.fmt.helper';
+import { ExpressionFormatter, formatExpressionTree } from '../expression.fmt';
 
 export class IndexExpressionFormatter extends ExpressionFormatter {
   tree: IndexExpressionTree;

@@ -1,6 +1,6 @@
 import { ArgumentTree } from '@xon/ast';
 import { BaseFormatter } from '../base.fmt';
-import { formatExpressionTree } from '../expression/expression.fmt.helper';
+import { formatExpressionTree } from '../expression/expression.fmt';
 
 export class ArgumentFormatter extends BaseFormatter {
   tree: ArgumentTree;

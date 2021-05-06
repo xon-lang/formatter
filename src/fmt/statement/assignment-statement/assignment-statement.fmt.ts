@@ -1,5 +1,5 @@
 import { AssignmentStatementTree } from '@xon/ast';
-import { getExpressionFormatter } from '../../expression/expression.fmt.helper';
+import { getExpressionFormatter } from '../../expression/expression.fmt';
 import { StatementFormatter } from '../statement.fmt';
 
 export class AssignmentStatementFormatter extends StatementFormatter {
