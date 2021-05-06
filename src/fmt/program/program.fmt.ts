@@ -3,7 +3,7 @@ import { config } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
 import { DefinitionFormatter } from '../definition/definition.fmt';
 import { LibraryFormatter } from '../library/library.fmt';
-import { getStatementFormatter } from '../statement/statement-helper';
+import { getStatementFormatter } from '../statement/statement.fmt.helper';
 
 export class ProgramFormatter extends BaseFormatter {
   tree: ProgramTree;
