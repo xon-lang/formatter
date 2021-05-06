@@ -1,26 +1,29 @@
 import { DefinitionTree } from '@xon/ast';
 import { config } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
-import { TypeFormatter } from '../type/type.fmt';
-import { getMemberFormatter } from './member/member-helper';
+import { formatParameterTree } from '../parameter/parameter.fmt.helper';
+import { formatTypeTree } from '../type/type.fmt.helper';
+import { formatMemberTree } from './member/member.fmt.helper';
 
 export class DefinitionFormatter extends BaseFormatter {
   tree: DefinitionTree;
 
   formattedCode(): string {
     const name = this.tree.name.trim();
-    const inheritance =
-      this.tree.inheritance && this.tree.inheritance.name !== 'Any'
-        ? ` is ${new TypeFormatter(this.tree.inheritance).formattedCode()}`
-        : '';
+    const declaredGenerics = this.tree.declaredGenerics.length
+      ? `<${this.tree.declaredGenerics.join(', ')}>`
+      : '';
+    const parameters = this.tree.parameters.length
+      ? `(${this.tree.parameters.map((x) => formatParameterTree(x)).join(', ')})`
+      : '';
+    const inheritanceType = this.tree.inheritanceType
+      ? ` is ${formatTypeTree(this.tree.inheritanceType)}`
+      : '';
 
-    const members = [...this.tree.properties, ...this.tree.methods, ...this.tree.infixOperators]
-      .map((x) => getMemberFormatter(x).formattedCode())
-      .join(config.emptyLine())
-      .split(config.newLine)
-      .map((x) => config.tab() + x)
-      .join(config.newLine);
+    const members = this.tree.members.map((x) => formatMemberTree(x)).join(config.nl2);
 
-    return `${name}${inheritance}:${members ? config.newLine : ''}${members}`;
+    return `${name}${declaredGenerics}${parameters}${inheritanceType}:${config.nl}${config.indent(
+      members || '--'
+    )}`;
   }
 }
