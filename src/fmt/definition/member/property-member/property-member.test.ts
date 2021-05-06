@@ -1,9 +1,6 @@
-import { parseMember } from '@xon/ast';
-import { PropertyMemberFormatter } from './property-member.fmt';
+import { formatMemberCode } from '../member.fmt.helper';
 
 test('property', () => {
   const code = 'a   Integer  ';
-  const tree = parseMember(code);
-  const fmt = new PropertyMemberFormatter(tree);
-  expect(fmt.formattedCode()).toBe('a Integer');
+  expect(formatMemberCode(code)).toBe('a Integer');
 });

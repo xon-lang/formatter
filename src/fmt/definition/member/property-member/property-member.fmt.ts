@@ -1,15 +1,16 @@
 import { PropertyMemberTree } from '@xon/ast';
-import { TypeFormatter } from '../../../type/type.fmt';
+import { formatExpressionTree } from '../../../expression/expression.fmt.helper';
+import { formatTypeTree } from '../../../type/type.fmt.helper';
 import { MemberFormatter } from '../member.fmt';
 
 export class PropertyMemberFormatter extends MemberFormatter {
   tree: PropertyMemberTree;
 
   formattedCode(): string {
-    const name = this.tree.name.trim();
+    const name = this.tree.name;
+    const type = formatTypeTree(this.tree.type);
+    const value = this.tree.value ? ` = ${formatExpressionTree(this.tree.value)}` : '';
 
-    const type = new TypeFormatter(this.tree.type).formattedCode();
-
-    return `${name} ${type}`;
+    return `${name} ${type}${value}`;
   }
 }
