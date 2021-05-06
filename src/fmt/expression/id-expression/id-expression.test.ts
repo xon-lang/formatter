@@ -1,9 +1,6 @@
-import { IdExpressionTree, parseExpression } from '@xon/ast';
-import { IdExpressionFormatter } from './id-expression.fmt';
+import { formatExpressionCode } from '../expression.fmt.helper';
 
-test('literal expression', () => {
+test('has name', () => {
   const code = 'list   ';
-  const tree = parseExpression<IdExpressionTree>(code);
-  const fmt = new IdExpressionFormatter(tree);
-  expect(fmt.formattedCode()).toBe('list');
+  expect(formatExpressionCode(code)).toBe('list');
 });
