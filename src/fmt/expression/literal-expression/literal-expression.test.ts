@@ -1,9 +1,6 @@
-import { LiteralExpressionTree, parseExpression } from '@xon/ast';
-import { LiteralExpressionFormatter } from './literal-expression.fmt';
+import { formatExpressionCode } from '../expression.fmt.helper';
 
 test('literal expression', () => {
   const code = '1  ';
-  const tree = parseExpression<LiteralExpressionTree>(code);
-  const fmt = new LiteralExpressionFormatter(tree);
-  expect(fmt.formattedCode()).toBe('1');
+  expect(formatExpressionCode(code)).toBe('1');
 });
