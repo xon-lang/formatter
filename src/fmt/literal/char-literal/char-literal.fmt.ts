@@ -5,6 +5,6 @@ export class CharLiteralFormatter extends LiteralFormatter {
   tree: CharLiteralTree;
 
   formattedCode(): string {
-    return this.tree.ctx.CharLiteral().text.trim();
+    return this.tree.ctx.CHAR_LITERAL().text.trim();
   }
 }

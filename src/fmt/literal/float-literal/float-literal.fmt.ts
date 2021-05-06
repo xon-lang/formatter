@@ -1,6 +1,6 @@
 import { FloatLiteralTree } from '@xon/ast';
 import { config } from '../../../formatter-config';
-import { groupedDigitsByUnderscore } from '../literal-helper';
+import { groupedDigitsByUnderscore } from '../literal.fmt.helper';
 import { LiteralFormatter } from '../literal.fmt';
 
 export class FloatLiteralFormatter extends LiteralFormatter {

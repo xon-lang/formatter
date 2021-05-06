@@ -1,25 +1,16 @@
-import { FloatLiteralTree, parseLiteral } from '@xon/ast';
-import { config } from '../../../formatter-config';
-import { FloatLiteralFormatter } from './float-literal.fmt';
+import { formatLiteralCode } from '../literal.fmt.helper';
 
-test('float literal', () => {
+test('has float value', () => {
   const code = '12X3.167a  ';
-  const tree = parseLiteral<FloatLiteralTree>(code);
-  const fmt = new FloatLiteralFormatter(tree);
-  expect(fmt.formattedCode()).toBe('12x3.167A');
+  expect(formatLiteralCode(code)).toBe('12x3.167A');
 });
 
-test('float literal underscore', () => {
+test('has float underscore value', () => {
   const code = '16X123abc_123.ddd12  ';
-  const tree = parseLiteral<FloatLiteralTree>(code);
-  const fmt = new FloatLiteralFormatter(tree);
-  expect(fmt.formattedCode()).toBe('16x123ABC_123.DDD12');
+  expect(formatLiteralCode(code)).toBe('16x123ABC_123.DDD12');
 });
 
-test('float literal grouped', () => {
+test('has float underscore value with grouping', () => {
   const code = '16X123abc_123.ddd12  ';
-  const tree = parseLiteral<FloatLiteralTree>(code);
-  const fmt = new FloatLiteralFormatter(tree);
-  config.digitsGroupCount = 4;
-  expect(fmt.formattedCode()).toBe('16x1_23AB_C123.D_DD12');
+  expect(formatLiteralCode(code)).toBe('16x1_23AB_C123.D_DD12');
 });

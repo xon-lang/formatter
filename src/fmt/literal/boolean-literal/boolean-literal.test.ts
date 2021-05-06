@@ -1,16 +1,11 @@
-import { BooleanLiteralTree, parseLiteral } from '@xon/ast';
-import { BooleanLiteralFormatter } from './boolean-literal.fmt';
+import { formatLiteralCode } from '../literal.fmt.helper';
 
-test('true literal', () => {
-  const code = 'true';
-  const tree = parseLiteral<BooleanLiteralTree>(code);
-  const fmt = new BooleanLiteralFormatter(tree);
-  expect(fmt.formattedCode()).toBe('true');
+test('has true value', () => {
+  const code = 'true  ';
+  expect(formatLiteralCode(code)).toBe('true');
 });
 
-test('false literal', () => {
-  const code = 'false';
-  const tree = parseLiteral<BooleanLiteralTree>(code);
-  const fmt = new BooleanLiteralFormatter(tree);
-  expect(fmt.formattedCode()).toBe('false');
+test('has false value', () => {
+  const code = 'false    ';
+  expect(formatLiteralCode(code)).toBe('false');
 });

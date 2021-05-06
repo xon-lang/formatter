@@ -1,9 +1,6 @@
-import { parseLiteral, CharLiteralTree } from '@xon/ast';
-import { CharLiteralFormatter } from './char-literal.fmt';
+import { formatLiteralCode } from '../literal.fmt.helper';
 
-test('string literal', () => {
-  const code =  "'A' ";
-  const tree = parseLiteral<CharLiteralTree>(code);
-  const fmt = new CharLiteralFormatter(tree);
-  expect(fmt.formattedCode()).toBe("'A'");
+test('has char value', () => {
+  const code = "'A'  ";
+  expect(formatLiteralCode(code)).toBe("'A'");
 });
