@@ -1,38 +1,40 @@
 export class FormatterConfig {
-  newLine = '\n';
+  public nl = '\n';
 
-  tabWidth = 4;
+  public tabWidth = 4;
 
-  useTab = false;
+  public useTab = false;
 
-  digitsGroupCount: number;
+  public digitsGroupCount: number;
 
-  breakIfStatement = true;
+  public breakIfStatement = true;
 
-  breakLoopStatement = true;
+  public breakLoopStatement = true;
 
-  maxPropertiesCount = 5;
+  public maxPropertiesCount = 5;
 
-  maxMethodsCount = 5;
+  public maxMethodsCount = 5;
 
-  maxOverloadsCount = 5;
+  public maxOverloadsCount = 5;
 
-  maxArgumentsCount = 5;
+  public maxArgumentsCount = 5;
+
+  public digitLetterCaseIsUpper = false;
+
+  public indent(s: string) {
+    const tab = this.useTab ? '\t' : ' '.repeat(this.tabWidth);
+    return s
+      .split('\n')
+      .map((x) => x.trim() && tab + x)
+      .join('\n');
+  }
+
+  public get nl2(): string {
+    return this.nl + this.nl;
+  }
 
   constructor(params: Partial<FormatterConfig> = {}) {
     Object.assign(this, params);
-  }
-
-  emptyLine(count = 1): string {
-    return this.newLine.repeat(count + 1);
-  }
-
-  tab(): string {
-    return this.useTab ? '\t' : ' '.repeat(this.tabWidth);
-  }
-
-  newLineTab(): string {
-    return this.newLine + this.tab();
   }
 }
 
