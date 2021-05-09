@@ -1,4 +1,5 @@
 import {
+  ArrayExpressionTree,
   ExpressionTree,
   IdExpressionTree,
   IndexExpressionTree,
@@ -9,6 +10,7 @@ import {
   OperatorExpressionTree,
   parseExpression,
 } from '@xon/ast';
+import { ArrayExpressionFormatter } from './array-expression/array-expression.fmt';
 import { ExpressionFormatter } from './expression.fmt';
 import { IdExpressionFormatter } from './id-expression/id-expression.fmt';
 import { IndexExpressionFormatter } from './index-expression/index-expression.fmt';
@@ -22,6 +24,7 @@ export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatte
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof ArrayExpressionTree) return new ArrayExpressionFormatter(tree);
   if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
   if (tree instanceof IndexExpressionTree) return new IndexExpressionFormatter(tree);
   if (tree instanceof InstanceExpressionTree) return new InstanceExpressionFormatter(tree);
