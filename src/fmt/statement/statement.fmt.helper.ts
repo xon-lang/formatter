@@ -28,5 +28,5 @@ export function formatStatementTree(tree: StatementTree): string {
 }
 
 export function formatStatementCode(code: string): string {
-  return getStatementFormatter(parseStatement(code)).formattedCode();
+  return formatStatementTree(parseStatement(code));
 }

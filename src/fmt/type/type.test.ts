@@ -1,16 +1,11 @@
-import { parseType } from '@xon/ast';
-import { TypeFormatter } from './type.fmt';
+import { formatTypeCode } from './type.fmt.helper';
 
 test('type with generics', () => {
   const code = 'Type   <  Integer ,   String  >  ';
-  const tree = parseType(code);
-  const type = new TypeFormatter(tree).formattedCode();
-  expect(type).toBe('Type<Integer, String>');
+  expect(formatTypeCode(code)).toBe('Type<Integer, String>');
 });
 
 test('type without generics', () => {
   const code = 'Type ';
-  const tree = parseType(code);
-  const type = new TypeFormatter(tree).formattedCode();
-  expect(type).toBe('Type');
+  expect(formatTypeCode(code)).toBe('Type');
 });

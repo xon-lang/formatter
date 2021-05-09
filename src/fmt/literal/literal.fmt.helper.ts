@@ -51,5 +51,5 @@ export function formatLiteralTree(tree: LiteralTree): string {
 }
 
 export function formatLiteralCode(code: string): string {
-  return getLiteralFormatter(parseLiteral(code)).formattedCode();
+  return formatLiteralTree(parseLiteral(code));
 }

@@ -12,5 +12,5 @@ export function formatProgramTree(tree: ProgramTree): string {
 }
 
 export function formatProgramCode(code: string): string {
-  return getProgramFormatter(parseProgram(code)).formattedCode();
+  return formatProgramTree(parseProgram(code));
 }

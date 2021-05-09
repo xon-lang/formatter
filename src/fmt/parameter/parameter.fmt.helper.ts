@@ -12,5 +12,5 @@ export function formatParameterTree(tree: ParameterTree): string {
 }
 
 export function formatParameterCode(code: string): string {
-  return getParameterFormatter(parseParameter(code)).formattedCode();
+  return formatParameterTree(parseParameter(code));
 }

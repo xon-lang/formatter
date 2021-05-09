@@ -12,5 +12,5 @@ export function formatDefinitionTree(tree: DefinitionTree): string {
 }
 
 export function formatDefinitionCode(code: string): string {
-  return getDefinitionFormatter(parseDefinition(code)).formattedCode();
+  return formatDefinitionTree(parseDefinition(code));
 }

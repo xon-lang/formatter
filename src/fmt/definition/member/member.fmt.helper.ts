@@ -28,5 +28,5 @@ export function formatMemberTree(tree: MemberTree): string {
 }
 
 export function formatMemberCode(code: string): string {
-  return getMemberFormatter(parseMember(code)).formattedCode();
+  return formatMemberTree(parseMember(code));
 }

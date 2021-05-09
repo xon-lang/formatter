@@ -12,5 +12,5 @@ export function formatArgumentTree(tree: ArgumentTree): string {
 }
 
 export function formatArgumentCode(code: string): string {
-  return getArgumentFormatter(parseArgument(code)).formattedCode();
+  return formatArgumentTree(parseArgument(code));
 }
