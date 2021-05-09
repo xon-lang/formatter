@@ -14,6 +14,7 @@ import {
   MethodExpressionTree,
   NegativeExpressionTree,
   OperatorExpressionTree,
+  ParenthesizedExpressionTree,
   parseExpression,
 } from '@xon/ast';
 import { ArrayExpressionFormatter } from './array-expression/array-expression.fmt';
@@ -31,11 +32,14 @@ import { MemberExpressionFormatter } from './member-expression/member-expression
 import { MethodExpressionFormatter } from './method-expression/method-expression.fmt';
 import { NegativeExpressionFormatter } from './negative-expression/negative-expression.fmt';
 import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
+import { ParenthesizedExpressionFormatter } from './paraenthesized-expression/paraenthesized-expression.fmt';
 
 export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatter {
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof ParenthesizedExpressionTree)
+    return new ParenthesizedExpressionFormatter(tree);
   if (tree instanceof NegativeExpressionTree) return new NegativeExpressionFormatter(tree);
   if (tree instanceof MethodExpressionTree) return new MethodExpressionFormatter(tree);
   if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionFormatter(tree);
