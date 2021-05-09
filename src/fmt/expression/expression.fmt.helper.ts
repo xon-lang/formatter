@@ -7,6 +7,9 @@ import {
   InstantiationExpressionTree,
   LambdaExpressionTree,
   LiteralExpressionTree,
+  LogicalAndExpressionTree,
+  LogicalNotExpressionTree,
+  LogicalOrExpressionTree,
   MemberExpressionTree,
   OperatorExpressionTree,
   parseExpression,
@@ -19,6 +22,9 @@ import { InstanceExpressionFormatter } from './instance-expression/instance-expr
 import { InstantiationExpressionFormatter } from './instantiation-expression/instantiation-expression.fmt';
 import { LambdaExpressionFormatter } from './lambda-expression/lambda-expression.fmt';
 import { LiteralExpressionFormatter } from './literal-expression/literal-expression.fmt';
+import { LogicalAndExpressionFormatter } from './logical-and-expression/logical-and-expression.fmt';
+import { LogicalNotExpressionFormatter } from './logical-not-expression/logical-not-expression.fmt';
+import { LogicalOrExpressionFormatter } from './logical-or-expression/logical-or-expression.fmt';
 import { MemberExpressionFormatter } from './member-expression/member-expression.fmt';
 import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
 
@@ -26,6 +32,9 @@ export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatte
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionFormatter(tree);
+  if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionFormatter(tree);
+  if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionFormatter(tree);
   if (tree instanceof LambdaExpressionTree) return new LambdaExpressionFormatter(tree);
   if (tree instanceof ArrayExpressionTree) return new ArrayExpressionFormatter(tree);
   if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
