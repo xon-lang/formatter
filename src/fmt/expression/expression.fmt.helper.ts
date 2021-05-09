@@ -16,6 +16,7 @@ import {
   OperatorExpressionTree,
   ParenthesizedExpressionTree,
   parseExpression,
+  PipeExpressionTree,
 } from '@xon/ast';
 import { ArrayExpressionFormatter } from './array-expression/array-expression.fmt';
 import { ExpressionFormatter } from './expression.fmt';
@@ -33,11 +34,13 @@ import { MethodExpressionFormatter } from './method-expression/method-expression
 import { NegativeExpressionFormatter } from './negative-expression/negative-expression.fmt';
 import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
 import { ParenthesizedExpressionFormatter } from './paraenthesized-expression/paraenthesized-expression.fmt';
+import { PipeExpressionFormatter } from './pipe-expression/pipe-expression.fmt';
 
 export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatter {
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof PipeExpressionTree) return new PipeExpressionFormatter(tree);
   if (tree instanceof ParenthesizedExpressionTree)
     return new ParenthesizedExpressionFormatter(tree);
   if (tree instanceof NegativeExpressionTree) return new NegativeExpressionFormatter(tree);
