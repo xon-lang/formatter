@@ -5,6 +5,7 @@ import {
   IndexExpressionTree,
   InstanceExpressionTree,
   InstantiationExpressionTree,
+  LambdaExpressionTree,
   LiteralExpressionTree,
   MemberExpressionTree,
   OperatorExpressionTree,
@@ -16,6 +17,7 @@ import { IdExpressionFormatter } from './id-expression/id-expression.fmt';
 import { IndexExpressionFormatter } from './index-expression/index-expression.fmt';
 import { InstanceExpressionFormatter } from './instance-expression/instance-expression.fmt';
 import { InstantiationExpressionFormatter } from './instantiation-expression/instantiation-expression.fmt';
+import { LambdaExpressionFormatter } from './lambda-expression/lambda-expression.fmt';
 import { LiteralExpressionFormatter } from './literal-expression/literal-expression.fmt';
 import { MemberExpressionFormatter } from './member-expression/member-expression.fmt';
 import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
@@ -24,6 +26,7 @@ export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatte
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof LambdaExpressionTree) return new LambdaExpressionFormatter(tree);
   if (tree instanceof ArrayExpressionTree) return new ArrayExpressionFormatter(tree);
   if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
   if (tree instanceof IndexExpressionTree) return new IndexExpressionFormatter(tree);
