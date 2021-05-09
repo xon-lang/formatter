@@ -1,15 +1,7 @@
-import { parseProgram } from '@xon/ast';
-import { ProgramFormatter } from './fmt/program/program.fmt';
+import { formatProgramCode } from './fmt/program/program.fmt.helper';
 import { config as cfg, FormatterConfig } from './formatter-config';
 
-export class CodeFormatter {
-  constructor(public code: string, public config?: Partial<FormatterConfig>) {
-    Object.assign(cfg, config);
-  }
-
-  formattedCode(): string {
-    const programTree = parseProgram(this.code);
-    const fmt = new ProgramFormatter(programTree);
-    return fmt.formattedCode();
-  }
+export function formatCode(code: string, config?: Partial<FormatterConfig>) {
+  Object.assign(cfg, config);
+  return formatProgramCode(code);
 }
