@@ -1,16 +1,13 @@
-import { CodeFormatter } from './code-formatter';
+import { formatCode } from './code-formatter';
 import { FormatterConfig } from './formatter-config';
 
 test('config', () => {
-  const code = 'my-scope   / libname : UUID as U4  ,  Math\n2+22222\nClass:\n    prop Integer';
-  const newConfig = new FormatterConfig({
+  const code = '12341234\n\n\n\nif   a:\n    1   + 1';
+  const config = new FormatterConfig({
     nl: '\r\n',
     tabWidth: 8,
     digitsGroupCount: 3,
   });
 
-  const fmt = new CodeFormatter(code, newConfig).formattedCode();
-  expect(fmt).toBe(
-    `my-scope/libname: UUID as U4, Math\r\n2 + 22_222\r\nClass:\r\n    prop Integer`
-  );
+  expect(formatCode(code, config)).toBe(`12_341_234\r\nif a:\r\n        1 + 1`);
 });
