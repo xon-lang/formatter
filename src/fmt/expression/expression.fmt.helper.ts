@@ -11,6 +11,7 @@ import {
   LogicalNotExpressionTree,
   LogicalOrExpressionTree,
   MemberExpressionTree,
+  MethodExpressionTree,
   OperatorExpressionTree,
   parseExpression,
 } from '@xon/ast';
@@ -26,12 +27,14 @@ import { LogicalAndExpressionFormatter } from './logical-and-expression/logical-
 import { LogicalNotExpressionFormatter } from './logical-not-expression/logical-not-expression.fmt';
 import { LogicalOrExpressionFormatter } from './logical-or-expression/logical-or-expression.fmt';
 import { MemberExpressionFormatter } from './member-expression/member-expression.fmt';
+import { MethodExpressionFormatter } from './method-expression/method-expression.fmt';
 import { OperatorExpressionFormatter } from './operator-expression/operator-expression.fmt';
 
 export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatter {
   if (tree === undefined) return undefined;
 
   if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
+  if (tree instanceof MethodExpressionTree) return new MethodExpressionFormatter(tree);
   if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionFormatter(tree);
   if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionFormatter(tree);
   if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionFormatter(tree);
@@ -57,5 +60,5 @@ export function formatExpressionTree(tree: ExpressionTree): string {
 }
 
 export function formatExpressionCode(code: string): string {
-  return getExpressionFormatter(parseExpression(code)).formattedCode();
+  return formatExpressionTree(parseExpression(code));
 }
