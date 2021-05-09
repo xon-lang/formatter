@@ -1,10 +1,6 @@
-import { parseProgram } from '@xon/ast';
-import { config } from '../../formatter-config';
-import { ProgramFormatter } from './program.fmt';
+import { formatProgramCode } from '../program/program.fmt.helper';
 
 test('program', () => {
-  const code = 'my-scope   / libname : UUID as U4  ,  Math\n2+2\n';
-  const tree = parseProgram(code);
-  const fmt = new ProgramFormatter(tree);
-  expect(fmt.formattedCode()).toBe(`my-scope/libname: UUID as U4, Math${config.emptyLine()}2 + 2`);
+  const code = '1 +   1';
+  expect(formatProgramCode(code)).toBe(`1 + 1`);
 });

@@ -7,7 +7,7 @@ test('has integer value', () => {
 });
 
 test('has hexadecimal underscore value', () => {
-  const code = '16xaBc23_123  ';
+  const code = '16XaBc23_123  ';
   config.digitLetterCaseIsUpper = false;
   expect(formatLiteralCode(code)).toBe('16xabc23_123');
 });

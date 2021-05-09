@@ -1,9 +1,9 @@
-import { AssignmentStatementTree } from '@xon/ast';
+import { IdAssignmentStatementTree } from '@xon/ast';
 import { getExpressionFormatter } from '../../expression/expression.fmt.helper';
 import { StatementFormatter } from '../statement.fmt';
 
-export class AssignmentStatementFormatter extends StatementFormatter {
-  tree: AssignmentStatementTree;
+export class IdAssignmentStatementFormatter extends StatementFormatter {
+  tree: IdAssignmentStatementTree;
 
   formattedCode(): string {
     const { name } = this.tree;

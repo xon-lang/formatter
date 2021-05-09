@@ -1,25 +1,16 @@
 import { ProgramTree } from '@xon/ast';
 import { config } from '../../formatter-config';
 import { BaseFormatter } from '../base.fmt';
-import { DefinitionFormatter } from '../definition/definition.fmt';
-import { LibraryFormatter } from '../library/library.fmt';
-import { getStatementFormatter } from '../statement/statement.fmt.helper';
+import { formatDefinitionTree } from '../definition/definition.fmt.helper';
+import { formatStatementTree } from '../statement/statement.fmt.helper';
 
 export class ProgramFormatter extends BaseFormatter {
   tree: ProgramTree;
 
   formattedCode(): string {
-    const libraries = this.tree.libraries.map((x) => new LibraryFormatter(x).formattedCode());
-    const statements = this.tree.statements.map((x) => getStatementFormatter(x).formattedCode());
-    const definitions = this.tree.definitions.map((x) =>
-      new DefinitionFormatter(x).formattedCode()
-    );
+    const statements = this.tree.statements.map((x) => formatStatementTree(x)).join(config.nl);
+    const definitions = this.tree.definitions.map((x) => formatDefinitionTree(x)).join(config.nl);
 
-    const members = [libraries, statements, definitions]
-      .map((x) => x.join(config.newLine))
-      .filter((x) => x)
-      .join(config.emptyLine());
-
-    return members;
+    return [statements, definitions].filter((x) => x).join(config.nl2);
   }
 }
