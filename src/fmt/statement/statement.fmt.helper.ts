@@ -3,16 +3,18 @@ import {
   ForStatementTree,
   IdAssignmentStatementTree,
   IfStatementTree,
+  LoopStatementTree,
   parseStatement,
   ReturnStatementTree,
   StatementTree,
 } from '@xon/ast';
-import { IdAssignmentStatementFormatter } from './id-assignment-statement/id-assignment-statement.fmt';
 import { ExpressionStatementFormatter } from './expression-statement/expression-statement.fmt';
+import { ForStatementFormatter } from './for-statement/for-statement.fmt';
+import { IdAssignmentStatementFormatter } from './id-assignment-statement/id-assignment-statement.fmt';
 import { IfStatementFormatter } from './if-statement/if-statement.fmt';
+import { LoopStatementFormatter } from './loop-statement/loop-statement.fmt';
 import { ReturnStatementFormatter } from './return-statement/return-statement.fmt';
 import { StatementFormatter } from './statement.fmt';
-import { ForStatementFormatter } from './for-statement/for-statement.fmt';
 
 export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree === undefined) return undefined;
@@ -22,6 +24,7 @@ export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree instanceof IdAssignmentStatementTree) return new IdAssignmentStatementFormatter(tree);
   if (tree instanceof IfStatementTree) return new IfStatementFormatter(tree);
   if (tree instanceof ForStatementTree) return new ForStatementFormatter(tree);
+  if (tree instanceof LoopStatementTree) return new LoopStatementFormatter(tree);
 
   throw Error(`Member formatter not found for "${tree.constructor.name}"`);
 }
