@@ -1,5 +1,5 @@
 import { IdAssignmentStatementTree, parseStatement } from '@xon/ast';
-import { IdAssignmentStatementFormatter } from './assignment-statement.fmt';
+import { IdAssignmentStatementFormatter } from './id-assignment-statement.fmt';
 
 test('expression statement', () => {
   const code = 'a   =b  ';

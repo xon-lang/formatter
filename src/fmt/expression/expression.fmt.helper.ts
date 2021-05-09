@@ -39,24 +39,24 @@ import { PipeExpressionFormatter } from './pipe-expression/pipe-expression.fmt';
 export function getExpressionFormatter(tree: ExpressionTree): ExpressionFormatter {
   if (tree === undefined) return undefined;
 
-  if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
-  if (tree instanceof PipeExpressionTree) return new PipeExpressionFormatter(tree);
-  if (tree instanceof ParenthesizedExpressionTree)
-    return new ParenthesizedExpressionFormatter(tree);
-  if (tree instanceof NegativeExpressionTree) return new NegativeExpressionFormatter(tree);
-  if (tree instanceof MethodExpressionTree) return new MethodExpressionFormatter(tree);
-  if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionFormatter(tree);
-  if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionFormatter(tree);
-  if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionFormatter(tree);
-  if (tree instanceof LambdaExpressionTree) return new LambdaExpressionFormatter(tree);
   if (tree instanceof ArrayExpressionTree) return new ArrayExpressionFormatter(tree);
-  if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
+  if (tree instanceof IdExpressionTree) return new IdExpressionFormatter(tree);
   if (tree instanceof IndexExpressionTree) return new IndexExpressionFormatter(tree);
   if (tree instanceof InstanceExpressionTree) return new InstanceExpressionFormatter(tree);
-  if (tree instanceof MemberExpressionTree) return new MemberExpressionFormatter(tree);
   if (tree instanceof InstantiationExpressionTree)
     return new InstantiationExpressionFormatter(tree);
+  if (tree instanceof LambdaExpressionTree) return new LambdaExpressionFormatter(tree);
   if (tree instanceof LiteralExpressionTree) return new LiteralExpressionFormatter(tree);
+  if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionFormatter(tree);
+  if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionFormatter(tree);
+  if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionFormatter(tree);
+  if (tree instanceof MemberExpressionTree) return new MemberExpressionFormatter(tree);
+  if (tree instanceof MethodExpressionTree) return new MethodExpressionFormatter(tree);
+  if (tree instanceof NegativeExpressionTree) return new NegativeExpressionFormatter(tree);
+  if (tree instanceof OperatorExpressionTree) return new OperatorExpressionFormatter(tree);
+  if (tree instanceof ParenthesizedExpressionTree)
+    return new ParenthesizedExpressionFormatter(tree);
+  if (tree instanceof PipeExpressionTree) return new PipeExpressionFormatter(tree);
 
   throw Error(`Expression formatter not found for "${tree.constructor.name}"`);
 }
