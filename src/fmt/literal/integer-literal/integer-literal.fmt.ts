@@ -11,8 +11,6 @@ export class IntegerLiteralFormatter extends LiteralFormatter {
     const integer = config.digitLetterCaseIsUpper
       ? this.tree.integer.toUpperCase()
       : this.tree.integer.toLowerCase();
-console.log('---',this.tree.integer);
-
 
     if (config.digitsGroupCount) {
       return `${radix}${groupedDigitsByUnderscore(integer)}`;
