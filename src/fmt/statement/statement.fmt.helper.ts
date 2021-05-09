@@ -7,6 +7,7 @@ import {
   parseStatement,
   ReturnStatementTree,
   StatementTree,
+  WhileStatementTree,
 } from '@xon/ast';
 import { ExpressionStatementFormatter } from './expression-statement/expression-statement.fmt';
 import { ForStatementFormatter } from './for-statement/for-statement.fmt';
@@ -15,6 +16,7 @@ import { IfStatementFormatter } from './if-statement/if-statement.fmt';
 import { LoopStatementFormatter } from './loop-statement/loop-statement.fmt';
 import { ReturnStatementFormatter } from './return-statement/return-statement.fmt';
 import { StatementFormatter } from './statement.fmt';
+import { WhileStatementFormatter } from './while-statement/while-statement.fmt';
 
 export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree === undefined) return undefined;
@@ -25,6 +27,7 @@ export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree instanceof IfStatementTree) return new IfStatementFormatter(tree);
   if (tree instanceof ForStatementTree) return new ForStatementFormatter(tree);
   if (tree instanceof LoopStatementTree) return new LoopStatementFormatter(tree);
+  if (tree instanceof WhileStatementTree) return new WhileStatementFormatter(tree);
 
   throw Error(`Member formatter not found for "${tree.constructor.name}"`);
 }
