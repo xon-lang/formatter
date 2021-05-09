@@ -1,9 +1,11 @@
-import { IfStatementTree, parseStatement } from '@xon/ast';
-import { IfStatementFormatter } from './if-statement.fmt';
+import { formatStatementCode } from '../statement.fmt.helper';
 
-test('if statement', () => {
+test('has then body', () => {
   const code = 'if   x:  \n    2  +2  ';
-  const tree = parseStatement<IfStatementTree>(code);
-  const fmt = new IfStatementFormatter(tree);
-  expect(fmt.formattedCode()).toBe('if x:\n    2 + 2');
+  expect(formatStatementCode(code)).toBe('if x:\n    2 + 2');
+});
+
+test('has then and else bodies', () => {
+  const code = 'if   x:  \n    2  +2  \nelse:\n    1+1';
+  expect(formatStatementCode(code)).toBe('if x:\n    2 + 2\nelse:\n    1 + 1');
 });
