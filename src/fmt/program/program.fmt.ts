@@ -11,11 +11,11 @@ export class ProgramFormatter extends BaseFormatter {
 
   formattedCode(): string {
     const statements = this.tree.statements.map((x) => formatStatementTree(x)).join(config.nl);
-    const functions = this.tree.functions.map((x) => formatFunctionTree(x)).join(config.nl);
+    const functions = this.tree.functions.map((x) => formatFunctionTree(x)).join(config.nl2);
     const extensionMethods = this.tree.extensionMethods
       .map((x) => formatExtensionMethodTree(x))
-      .join(config.nl);
-    const definitions = this.tree.definitions.map((x) => formatDefinitionTree(x)).join(config.nl);
+      .join(config.nl2);
+    const definitions = this.tree.definitions.map((x) => formatDefinitionTree(x)).join(config.nl2);
 
     return [statements, functions, extensionMethods, definitions].filter((x) => x).join(config.nl2);
   }
