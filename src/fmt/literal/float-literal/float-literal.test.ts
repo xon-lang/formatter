@@ -6,11 +6,11 @@ test('has float value', () => {
 });
 
 test('has float underscore value', () => {
-  const code = '16x123abc_123.ddd12  ';
-  expect(formatLiteralCode(code)).toBe('16x123ABC_123.DDD12');
+  const code = '16x123abc123.ddd12  ';
+  expect(formatLiteralCode(code)).toBe('16x123ABC123.DDD12');
 });
 
 test('has float underscore value with grouping', () => {
   const code = '16x123abc_123.ddd12  ';
-  expect(formatLiteralCode(code)).toBe('16x1_23AB_C123.D_DD12');
+  expect(formatLiteralCode(code)).toBe('16x123ABC_123.DDD12');
 });
