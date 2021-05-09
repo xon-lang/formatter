@@ -10,7 +10,7 @@ export class FunctionFormatter extends BaseFormatter {
 
   formattedCode(): string {
     const name = this.tree.name;
-    const declaredGenerics = this.tree.declaredGenerics
+    const declaredGenerics = this.tree.declaredGenerics.length
       ? '<' + this.tree.declaredGenerics.join(', ') + '>'
       : '';
     const parameters = this.tree.parameters.map((x) => formatParameterTree(x)).join(', ');
