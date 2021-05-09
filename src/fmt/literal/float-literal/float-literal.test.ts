@@ -2,7 +2,7 @@ import { formatLiteralCode } from '../literal.fmt.helper';
 
 test('has float value', () => {
   const code = '12X3.167a  ';
-  expect(formatLiteralCode(code)).toBe('12x3.167A');
+  expect(formatLiteralCode(code)).toBe('12X3.167A');
 });
 
 test('has float underscore value', () => {
