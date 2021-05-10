@@ -16,10 +16,13 @@ export class ExtensionMethodFormatter extends BaseFormatter {
       : '';
     const parameters = this.tree.parameters.map((x) => formatParameterTree(x)).join(', ');
     const returnType = formatTypeTree(this.tree.returnType);
-    const body = this.tree.body.map((x) => formatStatementTree(x)).join(config.nl);
+    const body = this.tree.body?.map((x) => formatStatementTree(x)).join(config.nl);
 
-    return `${extensionType}.${name}${declaredGenerics}(${parameters}) ${returnType}:${
-      config.nl
-    }${config.indent(body)}`;
+    if (body !== undefined)
+      return `${extensionType}.${name}${declaredGenerics}(${parameters}) ${returnType}:${
+        config.nl
+      }${config.indent(body)}`;
+
+    return `${extensionType}.${name}${declaredGenerics}(${parameters}) ${returnType}`;
   }
 }

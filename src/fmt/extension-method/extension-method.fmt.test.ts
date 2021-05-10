@@ -5,7 +5,12 @@ test('has generics', () => {
   expect(formatExtensionMethodCode(code)).toBe('String?.join<T>(a Char, b Integer) null:\n    1 + 1');
 });
 
-test('has not generics', () => {
+test('has no generics', () => {
   const code = 'String ?  .join  (  a  Char  ,  b  Integer)  null  :\n    1 + 1';
   expect(formatExtensionMethodCode(code)).toBe('String?.join(a Char, b Integer) null:\n    1 + 1');
+});
+
+test('has bo body', () => {
+  const code = 'String ?  .join  (  a  Char  ,  b  Integer)  null';
+  expect(formatExtensionMethodCode(code)).toBe('String?.join(a Char, b Integer) null');
 });

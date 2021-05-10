@@ -5,7 +5,7 @@ test('has parameters', () => {
   expect(formatExpressionCode(code)).toBe('\\a, b, c: 1 + 1');
 });
 
-test('has not parameters', () => {
+test('has no parameters', () => {
   const code = '\\1+1';
   expect(formatExpressionCode(code)).toBe('\\1 + 1');
 });

@@ -12,8 +12,11 @@ export class OperatorMemberFormatter extends MemberFormatter {
     const name = this.tree.name;
     const parameters = this.tree.parameters.map((x) => formatParameterTree(x)).join(', ');
     const returnType = formatTypeTree(this.tree.returnType);
-    const statements = this.tree.body.map((x) => formatStatementTree(x)).join(config.nl);
+    const body = this.tree.body?.map((x) => formatStatementTree(x)).join(config.nl);
 
-    return `${name} (${parameters}) ${returnType}:${config.nl}${config.indent(statements || '--')}`;
+    if (body !== undefined)
+      return `${name} (${parameters}) ${returnType}:${config.nl}${config.indent(body || '--')}`;
+
+    return `${name} (${parameters}) ${returnType}`;
   }
 }

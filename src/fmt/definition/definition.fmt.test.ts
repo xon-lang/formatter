@@ -10,6 +10,6 @@ test('another definition', () => {
     mu (k Integer, b Number) String:
         l + d`;
   expect(formatDefinitionCode(code)).toBe(
-    `Class:\n    mu (k Integer, b Number) String:\n        l + d`
+    `Class:\n    mu(k Integer, b Number) String:\n        l + d`
   );
 });
