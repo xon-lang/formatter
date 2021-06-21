@@ -5,6 +5,7 @@ import {
   IdAssignmentStatementTree,
   IfStatementTree,
   LoopStatementTree,
+  MemberAssignmentStatementTree,
   parseStatement,
   ReturnStatementTree,
   StatementTree,
@@ -16,6 +17,7 @@ import { ForStatementFormatter } from './for-statement/for-statement.fmt';
 import { IdAssignmentStatementFormatter } from './id-assignment-statement/id-assignment-statement.fmt';
 import { IfStatementFormatter } from './if-statement/if-statement.fmt';
 import { LoopStatementFormatter } from './loop-statement/loop-statement.fmt';
+import { MemberAssignmentStatementFormatter } from './member-assignment-statement/member-assignment-statement.fmt';
 import { ReturnStatementFormatter } from './return-statement/return-statement.fmt';
 import { StatementFormatter } from './statement.fmt';
 import { WhileStatementFormatter } from './while-statement/while-statement.fmt';
@@ -26,6 +28,8 @@ export function getStatementFormatter(tree: StatementTree): StatementFormatter {
   if (tree instanceof AssertStatementTree) return new AssertStatementFormatter(tree);
   if (tree instanceof ExpressionStatementTree) return new ExpressionStatementFormatter(tree);
   if (tree instanceof ReturnStatementTree) return new ReturnStatementFormatter(tree);
+  if (tree instanceof MemberAssignmentStatementTree)
+    return new MemberAssignmentStatementFormatter(tree);
   if (tree instanceof IdAssignmentStatementTree) return new IdAssignmentStatementFormatter(tree);
   if (tree instanceof IfStatementTree) return new IfStatementFormatter(tree);
   if (tree instanceof ForStatementTree) return new ForStatementFormatter(tree);
